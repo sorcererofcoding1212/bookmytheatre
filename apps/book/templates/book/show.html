@@ -1,0 +1,92 @@
+{% extends 'layouts/defLayout.html' %} {% block children %} {% load static %}
+<div>
+  <div class="py-4 px-8 bg-slate-200/60 flex gap-x-8 items-center">
+    <i
+      onclick="window.history.back()"
+      class="fa-solid fa-chevron-left text-xl cursor-pointer opacity-90"
+    ></i>
+    <div>
+      <div class="text-xl font-medium">{{show.movie.title}}</div>
+      <div class="flex gap-x-2 font-medium opacity-70">
+        <div>{{show.screen.venue.name}}, {{show.screen.venue.locality}}</div>
+        <div class="text-sm">|</div>
+        <div>{{show.show_timings|date:"D"}}, {{show.show_timings|date}}</div>
+        <div class="text-sm">|</div>
+        <div>{{show.show_timings|time:"g:i A"}}</div>
+      </div>
+    </div>
+  </div>
+  <div class="mt-10">
+    <form
+      method="post"
+      class="w-[40vw] mx-auto border flex flex-col gap-y-4 py-4 px-8 border-gray-100 rounded-md shadow-md bg-white"
+    >
+      {% csrf_token %}
+      <div class="text-xl text-rose-500 text-center font-medium">
+        Select tickets quantity
+      </div>
+      <div class="flex gap-x-8 justify-center mt-2 items-center">
+        <button
+          type="button"
+          id="increaseButton"
+          class="flex h-12 cursor-pointer justify-center items-center px-4 rounded-md text-3xl text-white bg-rose-500 font-medium"
+        >
+          +
+        </button>
+        <input
+          type="hidden"
+          name="ticket_quantity"
+          id="booking_form_ticket_quantity"
+        />
+        <div
+          class="px-6 py-3 rounded-md bg-slate-100"
+          id="booking_form_ticket_quantity_displayer"
+        ></div>
+        <button
+          id="decreaseButton"
+          type="button"
+          class="flex h-12 cursor-pointer justify-center items-center px-4 rounded-md text-3xl text-white bg-rose-500 font-medium"
+        >
+          &ndash;
+        </button>
+      </div>
+      <button
+        type="submit"
+        class="w-full bg-rose-500 text-white py-2 mt-2 rounded-md cursor-pointer font-medium"
+      >
+        Book tickets
+      </button>
+    </form>
+  </div>
+  <script>
+    const ticketQuantityDisplayer = document.getElementById(
+      "booking_form_ticket_quantity_displayer",
+    );
+
+    const ticketInput = document.getElementById("booking_form_ticket_quantity");
+
+    const increaseButton = document.getElementById("increaseButton");
+    const decreaseButton = document.getElementById("decreaseButton");
+
+    let quantity = 1;
+
+    increaseButton.addEventListener("click", () => {
+      quantity++;
+      render(quantity);
+    });
+
+    decreaseButton.addEventListener("click", () => {
+      if (quantity == 1) return;
+      quantity--;
+      render(quantity);
+    });
+
+    const render = (quantity) => {
+      ticketQuantityDisplayer.innerHTML = quantity;
+      ticketInput.value = quantity;
+    };
+
+    render(quantity);
+  </script>
+</div>
+{% endblock children %}

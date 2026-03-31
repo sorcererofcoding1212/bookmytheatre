@@ -1,0 +1,85 @@
+{% extends 'layouts/navLayout.html' %}
+{% load static %}
+{% block children %}
+<div class="mt-10">
+  <div class="text-center text-4xl text-rose-500 font-medium">
+    Create an account
+  </div>
+  <div class="mt-10">
+    <form
+      method="post"
+      class="w-[40vw] mx-auto border flex flex-col gap-y-4 py-4 px-8 border-gray-100 rounded-md shadow-md bg-white"
+    >
+      {% csrf_token %}
+      <div class="flex flex-col gap-y-2">
+        <label for="register_form_email" class="opacity-60 cursor-pointer"
+          >Email</label
+        >
+        <input
+          type="email"
+          name="email"
+          id="register_form_email"
+          class="px-6 py-2 rounded-md outline-none border-gray-300 border"
+          placeholder="Enter your email"
+        />
+      </div>
+      <div class="flex justify-between">
+        <div class="flex flex-col gap-y-2">
+          <label for="register_form_first_name" class="opacity-60 cursor-pointer"
+            >First Name</label
+          >
+          <input
+            type="text"
+            name="first_name"
+            id="register_form_first_name"
+            class="px-6 py-2 rounded-md outline-none border-gray-300 border"
+            placeholder="Enter your first name"
+          />
+        </div>
+        <div class="flex flex-col gap-y-2">
+          <label for="register_form_last_name" class="opacity-60 cursor-pointer"
+            >Last Name</label
+          >
+          <input
+            type="text"
+            name="last_name"
+            id="register_form_last_name"
+            class="px-6 py-2 rounded-md outline-none border-gray-300 border"
+            placeholder="Enter your last name"
+          />
+        </div>
+      </div>
+      <div class="flex flex-col gap-y-2">
+        <label for="register_form_password" class="opacity-60 cursor-pointer"
+          >Password</label
+        >
+        <input
+          type="password"
+          name="password"
+          id="register_form_password"
+          class="px-6 py-2 rounded-md outline-none border-gray-300 border"
+          placeholder="Create a password"
+        />
+      </div>
+      <input type="hidden" name="city" id="register_form_city">
+      <button
+        class="w-full py-2.5 rounded-md cursor-pointer bg-green-500 text-white font-medium"
+        type="submit"
+      >
+        Register
+      </button>
+      <div class="text-center opacity-80">
+        Already have an account?
+        <span>
+          <a
+            class="underline underline-offset-1 text-blue-500"
+            href="{% url 'users:login' %}"
+            >Login.</a
+          >
+        </span>
+      </div>
+    </form>
+  </div>
+  <script src="{% static 'register.js' %}"></script>
+</div>
+{% endblock children %}

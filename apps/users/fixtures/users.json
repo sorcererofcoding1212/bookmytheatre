@@ -1,0 +1,34 @@
+[
+{
+    "model": "users.city",
+    "pk": 1,
+    "fields": {
+        "name": "Delhi"
+    }
+},
+{
+    "model": "users.city",
+    "pk": 2,
+    "fields": {
+        "name": "Jalandhar"
+    }
+},
+{
+    "model": "users.account",
+    "pk": 1,
+    "fields": {
+        "password": "pbkdf2_sha256$1200000$S602ogQUZsX8QnULwjeZrV$7+a4v3PO1A7aFlx0hguQytHMoPZF2sJk+XE7jNL6lcQ=",
+        "last_login": "2026-03-28T08:59:17.624Z",
+        "is_superuser": true,
+        "first_name": "Manvir",
+        "last_name": "Singh",
+        "is_staff": true,
+        "is_active": true,
+        "date_joined": "2026-03-28T08:10:37.866Z",
+        "email": "urbanmanvir27@gmail.com",
+        "city": 2,
+        "groups": [],
+        "user_permissions": []
+    }
+}
+]

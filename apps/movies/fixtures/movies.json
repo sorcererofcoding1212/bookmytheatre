@@ -1,0 +1,96 @@
+[
+    {
+        "model": "movies.genre",
+        "pk": 1,
+        "fields": {
+            "tag": "Crime"
+        }
+    },
+    {
+        "model": "movies.genre",
+        "pk": 2,
+        "fields": {
+            "tag": "Drama"
+        }
+    },
+    {
+        "model": "movies.genre",
+        "pk": 3,
+        "fields": {
+            "tag": "Sci-Fi"
+        }
+    },
+    {
+        "model": "movies.genre",
+        "pk": 4,
+        "fields": {
+            "tag": "Thriller"
+        }
+    },
+    {
+        "model": "movies.genre",
+        "pk": 5,
+        "fields": {
+            "tag": "Action"
+        }
+    },
+    {
+        "model": "movies.genre",
+        "pk": 6,
+        "fields": {
+            "tag": "Comedy"
+        }
+    },
+    {
+        "model": "movies.movie",
+        "pk": 1,
+        "fields": {
+            "title": "Dhurandhar 2: The Revenge",
+            "desc": "Dhurandhar The Revenge introduces Jaskirat Singh Rangi, tracing the chain of events that compel him to become Hamza Ali Mazari, and follows his rise as he operates deep inside Pakistan.\n \n The film is set to return this time in Hindi, Telugu, Tamil, Kannada and Malayalam.",
+            "certification": "A",
+            "release_date": "2026-03-19",
+            "created_at": "2026-01-01T10:00:00Z",
+            "genres": [
+                5,
+                4
+            ],
+            "image": "https://assets-in.bmscdn.com/iedb/movies/images/mobile/thumbnail/xlarge/dhurandhar-the-revenge-et00478890-1772893614.jpg",
+            "runtime": "196"
+        }
+    },
+    {
+        "model": "movies.movie",
+        "pk": 2,
+        "fields": {
+            "title": "Project Hail Mary",
+            "desc": "Science teacher Ryland Grace wakes up alone on a spaceship, light-years from Earth. As his memory returns, he uncovers a mission to stop a mysterious substance killing the Sun and save Earth. An unexpected friendship may be the key. \n \n Based on the novel Project Hail Mary by Andy Weir, author of The Martian.",
+            "certification": "U/A",
+            "release_date": "2026-03-26",
+            "created_at": "2026-01-02T10:00:00Z",
+            "genres": [
+                2,
+                3
+            ],
+            "image": "https://assets-in.bmscdn.com/iedb/movies/images/mobile/thumbnail/xlarge/project-hail-mary-et00451760-1751358286.jpg",
+            "runtime": "146"
+        }
+    },
+    {
+        "model": "movies.movie",
+        "pk": 3,
+        "fields": {
+            "title": "The Dark Knight",
+            "desc": "Batman faces the Joker in Gotham City.",
+            "certification": "U/A",
+            "release_date": "2008-07-18",
+            "created_at": "2026-01-03T10:00:00Z",
+            "genres": [
+                2,
+                4,
+                5
+            ],
+            "image": "https://assets-in.bmscdn.com/iedb/movies/images/extra/vertical_logo/mobile/thumbnail/xxlarge/the-dark-knight-et00001549-1751873478.jpg",
+            "runtime": "154"
+        }
+    }
+]

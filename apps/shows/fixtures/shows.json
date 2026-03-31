@@ -1,0 +1,63 @@
+[
+    {
+        "model": "shows.venue",
+        "pk": 1,
+        "fields": {
+            "name": "PVR Cinemas: Curo Mall",
+            "locality": "Near 66 Ft. Road, Jalandhar, Punjab",
+            "city": 2
+        }
+    },
+    {
+        "model": "shows.venue",
+        "pk": 2,
+        "fields": {
+            "name": "PVR Cinemas: MBD Neopolis",
+            "locality": "Near BMC Chowk, Jalandhar, Punjab",
+            "city": 2
+        }
+    },
+    {
+        "model": "shows.venue",
+        "pk": 3,
+        "fields": {
+            "name": "PVR Cinemas: Ambience Mall",
+            "locality": "New Delhi, New Delhi",
+            "city": 1
+        }
+    },
+    {
+        "model": "shows.screen",
+        "pk": 1,
+        "fields": {
+            "venue": 1,
+            "name": "Audi A1"
+        }
+    },
+    {
+        "model": "shows.screen",
+        "pk": 2,
+        "fields": {
+            "venue": 3,
+            "name": "Audi A3"
+        }
+    },
+    {
+        "model": "shows.show",
+        "pk": 1,
+        "fields": {
+            "movie": 1,
+            "screen": 1,
+            "show_timings": "2026-03-29T10:47:38Z"
+        }
+    },
+    {
+        "model": "shows.show",
+        "pk": 2,
+        "fields": {
+            "movie": 1,
+            "screen": 2,
+            "show_timings": "2026-03-29T11:48:07Z"
+        }
+    }
+]

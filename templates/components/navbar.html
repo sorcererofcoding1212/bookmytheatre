@@ -1,0 +1,90 @@
+{% load static %} {% url 'users:login' as login_url %} 
+{% url 'users:register' as register_url %} {% url 'pages:home' as home_url %}
+<nav
+  class="flex justify-between px-8 py-4 items-center bg-white border-b border-gray-200"
+>
+  <a
+    href="{% url 'pages:home' %}"
+    class="italic text-xl story-script-medium text-rose-500 cursor-pointer"
+  >
+    BookMyTheatre
+  </a>
+  <form
+    method="post"
+    action="{% url 'core:navbar' %}"
+    onsubmit="((e) => {
+      // clear the movie_title here
+    })"
+    class="relative flex items-center {% if request.path == login_url or request.path == register_url %} invisible {% endif %}"
+  >
+    {% csrf_token %}
+    <i class="fa-solid fa-search absolute left-4 opacity-40"></i>
+    <input
+      name="movie_title"
+      id="navbar_form_movie_title"
+      type="text"
+      placeholder="Search for movie shows near you"
+      class="px-12 py-2 border-gray-200 w-[40vw] rounded-md outline-none"
+    />
+  </form>
+  <div class="flex gap-x-8 items-center">
+    {% if user.is_authenticated %}
+    <div
+      onclick="my_modal_1.showModal()"
+      class="text-rose-500 cursor-pointer rounded-md flex gap-x-2 w-24 invisible {% if request.path == home_url %} visible {% endif %}"
+    >
+      <span> {{ user.city }} </span>
+      <span>
+        <i class="fa-solid fa-angle-down text-xs"></i>
+      </span>
+    </div>
+    <dialog id="my_modal_1" class="modal">
+      <div class="modal-box w-full">
+        <div class="modal-action w-full">
+          <form
+            method="post"
+            class="flex flex-col gap-y-4 w-full"
+            onsubmit="my_modal_1.close()"
+          >
+            {% csrf_token %}
+            <div class="relative flex items-center">
+              <i class="fa-solid fa-search absolute left-4 opacity-40"></i>
+              <input
+                type="text"
+                name="city"
+                id="search_form_city"
+                placeholder="Search for your city"
+                class="pl-12 px-4 py-2 rounded-md w-full outline-none border-gray-200"
+                min="1"
+              />
+            </div>
+            <button
+              onclick="my_modal_1.close()"
+              type="button"
+              class="px-4 py-2 bg-rose-500 font-medium text-white outline-none rounded-md cursor-pointer w-fit self-end"
+            >
+              Close
+            </button>
+          </form>
+        </div>
+      </div>
+    </dialog>
+    <form method="post" action="{% url 'users:logout' %}">
+      {% csrf_token %}
+      <button
+        class="px-4 rounded-md cursor-pointer py-2 bg-rose-500 inline text-white font-semibold"
+        type="submit"
+      >
+        Logout
+      </button>
+    </form>
+    {% else %}
+    <a
+      href="{% url 'users:login' %}"
+      class="bg-rose-500 py-2 px-4 text-white font-medium text-sm rounded-md {% if request.path == login_url or request.path == register_url %} invisible {% endif %}"
+    >
+      Sign in
+    </a>
+    {% endif %}
+  </div>
+</nav>

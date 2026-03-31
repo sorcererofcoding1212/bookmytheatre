@@ -1,0 +1,55 @@
+{% extends 'layouts/navLayout.html' %} {% block children %}
+<div class="mt-10">
+  <div class="text-center text-4xl text-rose-500 font-medium">
+    Log in to your account
+  </div>
+  <div class="mt-10">
+    <form
+      method="post"
+      class="w-[40vw] mx-auto border flex flex-col gap-y-4 py-4 px-8 border-gray-100 rounded-md shadow-md bg-white"
+    >
+      {% csrf_token %}
+      <div class="flex flex-col gap-y-2">
+        <label for="login_form_email" class="opacity-60 cursor-pointer"
+          >Email</label
+        >
+        <input
+          type="email"
+          name="username"
+          id="login_form_email"
+          class="px-6 py-2 rounded-md outline-none border-gray-300 border"
+          placeholder="Enter your email"
+        />
+      </div>
+      <div class="flex flex-col gap-y-2">
+        <label for="login_form_password" class="opacity-60 cursor-pointer"
+          >Password</label
+        >
+        <input
+          type="password"
+          name="password"
+          id="login_form_password"
+          class="px-6 py-2 rounded-md outline-none border-gray-300 border"
+          placeholder="Enter your password"
+        />
+      </div>
+      <button
+        class="w-full py-2.5 rounded-md cursor-pointer bg-green-500 text-white font-medium"
+        type="submit"
+      >
+        Log in
+      </button>
+      <div class="text-center opacity-80">
+        Don't have an account?
+        <span>
+          <a
+            class="underline underline-offset-1 text-blue-500"
+            href="{% url 'users:register' %}"
+            >Register.</a
+          >
+        </span>
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock children %}

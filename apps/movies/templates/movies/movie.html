@@ -1,0 +1,43 @@
+{% extends 'layouts/navLayout.html' %} {% block children %}
+<div>
+  <div class="relative px-32 py-8 overflow-hidden">
+    <div
+      class="absolute inset-0 bg-cover bg-center blur-lg scale-110"
+      style="background-image: url('{{ movie.image }}');"
+    ></div>
+    <div class="absolute inset-0 bg-black/50"></div>
+    <div class="relative flex items-center gap-x-8">
+      <div class="h-96 w-60">
+        <img
+          src="{{ movie.image }}"
+          alt="{{ movie.title }}"
+          class="h-full w-full object-cover rounded-2xl"
+        />
+      </div>
+      <div class="flex flex-col gap-y-2">
+        <div class="text-3xl font-semibold text-white">{{movie.title}}</div>
+        <div class="flex gap-x-3 text-white font-medium">
+          <div>{{movie.runtime_display}}</div>
+          <span>•</span>
+          <div>
+            {% for tag in movie.genres.all %}
+            <span>{{ tag }}{% if not forloop.last %}/{% endif %}</span>
+            {% endfor %}
+          </div>
+          <span>•</span>
+          <div>{{movie.certification}}</div>
+          <span>•</span>
+          <div>{{movie.release_date}}</div>
+        </div>
+        <a href="{% url 'shows:shows' movie.id %}" class="px-12 rounded-md py-4 cursor-pointer w-fit mt-3 bg-rose-500 font-semibold text-white">
+            Book tickets
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="px-32 mt-10">
+    <div class="text-2xl font-semibold">About the movie</div>
+    <div class="mt-4 text-[17px]">{{movie.desc}}</div>
+  </div>
+</div>
+{% endblock children %}
