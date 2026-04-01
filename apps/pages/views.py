@@ -13,6 +13,7 @@ class IndexView(ListView):
     template_name = 'pages/index.html'
     model = Movie
     context_object_name = 'movies'
+    paginate_by = 5
 
     @method_decorator(login_required)
     def post(self, request, *args, **kwargs):
