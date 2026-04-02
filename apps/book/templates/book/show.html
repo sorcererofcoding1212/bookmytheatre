@@ -1,20 +1,24 @@
-{% extends 'layouts/defLayout.html' %} {% block children %} {% load static %}
+{% extends 'layouts/defLayout.html' %} {% block children %} {% load static %} 
+{% load filters %}
 <div>
-  <div class="py-4 px-8 bg-slate-200/60 flex gap-x-8 items-center">
-    <i
-      onclick="window.history.back()"
-      class="fa-solid fa-chevron-left text-xl cursor-pointer opacity-90"
-    ></i>
-    <div>
-      <div class="text-xl font-medium">{{show.movie.title}}</div>
-      <div class="flex gap-x-2 font-medium opacity-70">
-        <div>{{show.screen.venue.name}}, {{show.screen.venue.locality}}</div>
-        <div class="text-sm">|</div>
-        <div>{{show.show_timings|date:"D"}}, {{show.show_timings|date}}</div>
-        <div class="text-sm">|</div>
-        <div>{{show.show_timings|time:"g:i A"}}</div>
+  <div class="px-8 py-4 bg-slate-200/60 flex justify-between items-center">
+    <div class="flex gap-x-8 items-center">
+      <i
+        onclick="window.history.back()"
+        class="fa-solid fa-chevron-left text-xl cursor-pointer opacity-90"
+      ></i>
+      <div>
+        <div class="text-xl font-medium">{{show.movie.title}}</div>
+        <div class="flex gap-x-2 font-medium opacity-70">
+          <div>{{show.screen.venue.name}}, {{show.screen.venue.locality}}</div>
+          <div class="text-sm">|</div>
+          <div>{{show.show_timings|date:"D"}}, {{show.show_timings|date}}</div>
+          <div class="text-sm">|</div>
+          <div>{{show.show_timings|time:"g:i A"}}</div>
+        </div>
       </div>
     </div>
+    <div class="opacity-70 font-medium">Price: ₹{{show.ticket_price}}</div>
   </div>
   <div class="mt-10">
     <form
@@ -51,10 +55,10 @@
         </button>
       </div>
       <button
+        id="paymentDisplayer"
         type="submit"
         class="w-full bg-rose-500 text-white py-2 mt-2 rounded-md cursor-pointer font-medium"
       >
-        Book tickets
       </button>
     </form>
   </div>
@@ -63,10 +67,12 @@
       "booking_form_ticket_quantity_displayer",
     );
 
+    const ticket_price = {{show.ticket_price}};
     const ticketInput = document.getElementById("booking_form_ticket_quantity");
 
     const increaseButton = document.getElementById("increaseButton");
     const decreaseButton = document.getElementById("decreaseButton");
+    const paymentDisplayer = document.getElementById("paymentDisplayer");
 
     let quantity = 1;
 
@@ -84,6 +90,8 @@
     const render = (quantity) => {
       ticketQuantityDisplayer.innerHTML = quantity;
       ticketInput.value = quantity;
+      payment = ticket_price * quantity;
+      paymentDisplayer.innerHTML = `Pay ₹${payment}`;
     };
 
     render(quantity);
